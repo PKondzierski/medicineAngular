@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div>
+  <form class="example" [formGroup] = "formdata" (ngSubmit) = "onClickSubmit(formdata.value)" style="max-width: 300px; margin:auto " >
+     <input type = "text" placeholder="Search.." name="name" formControlName="drug">
+     <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+
+
+
+<div *ngIf="obj">
+  <h1>{{obj.name | uppercase}}</h1>
+  <h2>Substancje aktywne</h2>
+<table>
+  <thead>
+  <th>Nazwa</th>
+  <th>Możliwe uczulenie</th>
+</thead>
+<tbody>
+<tr *ngFor = "let column of obj.activeSubstances">
+  <td>{{column.name}}</td>
+  <td>{{column.allergenChance}}%</td>
+</tr>
+</tbody>
+</table>
+
+  <h2>Substancje pomocnicze</h2>
+<table>
+  <thead>
+  <th>Nazwa</th>
+</thead>
+<tbody>
+<tr *ngFor = "let column of obj.auxiliarySubstances">
+  <td>{{column.name}}</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
